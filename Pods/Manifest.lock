@@ -1,0 +1,104 @@
+PODS:
+  - Firebase/AdMob (5.0.0):
+    - Firebase/Core
+    - Google-Mobile-Ads-SDK (= 7.30.0)
+  - Firebase/Core (5.0.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.0)
+  - Firebase/CoreOnly (5.0.0):
+    - FirebaseCore (= 5.0.0)
+  - Firebase/DynamicLinks (5.0.0):
+    - Firebase/Core
+    - FirebaseDynamicLinks (= 3.0.0)
+  - Firebase/Messaging (5.0.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.0.0)
+  - FirebaseAnalytics (5.0.0):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.0.0):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseDynamicLinks (3.0.0):
+    - FirebaseAnalytics (~> 5.0)
+  - FirebaseInstanceID (3.0.0):
+    - FirebaseCore (~> 5.0)
+  - FirebaseMessaging (3.0.0):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
+  - GCDWebServer (3.4.2):
+    - GCDWebServer/Core (= 3.4.2)
+  - GCDWebServer/Core (3.4.2)
+  - Google-Mobile-Ads-SDK (7.30.0)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - MBProgressHUD (1.0.0)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - OneSignal (2.8.4)
+  - Protobuf (3.5.0)
+  - SwiftyStoreKit (0.13.2)
+  - SwiftyUserDefaults (3.0.1)
+  - WKBridge (0.2.4)
+
+DEPENDENCIES:
+  - Firebase/AdMob
+  - Firebase/Core
+  - Firebase/DynamicLinks
+  - Firebase/Messaging
+  - GCDWebServer (~> 3.0)
+  - MBProgressHUD (~> 1.0.0)
+  - OneSignal
+  - SwiftyStoreKit
+  - SwiftyUserDefaults
+  - WKBridge
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseDynamicLinks
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GCDWebServer
+    - Google-Mobile-Ads-SDK
+    - GoogleToolboxForMac
+    - MBProgressHUD
+    - nanopb
+    - OneSignal
+    - Protobuf
+    - SwiftyStoreKit
+    - SwiftyUserDefaults
+    - WKBridge
+
+SPEC CHECKSUMS:
+  Firebase: 4bd804448ab2596794698773d41520a0af101e65
+  FirebaseAnalytics: 19812b49fa5f283dd6b23edf8a14b5d477029ab8
+  FirebaseCore: e46e4babb9de298fb2f736958edcc6da1dc60d73
+  FirebaseDynamicLinks: c70e8ef2f267f13459db89b8816b13a06b2278d2
+  FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FirebaseMessaging: f2360a966ecfb0d14facf0fbdf306efc2df0ddbe
+  GCDWebServer: 8d67ee9f634b4bb91eb4b8aee440318a5fc6debd
+  Google-Mobile-Ads-SDK: 7404f68120ae8682afeb5af001fbf4aad731c78e
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  OneSignal: 7218a5a787f6685de81bdb487e696439e8c8f59b
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  SwiftyStoreKit: b7563505440a68c9d9fa70bc43d8a97015519409
+  SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
+  WKBridge: 677fc36b9a9e4a80b6f9c4e915480d8fd91f5ad5
+
+PODFILE CHECKSUM: 214b1183facf606d7237c0118d5ca5731426fa6e
+
+COCOAPODS: 1.5.0

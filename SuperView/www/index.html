@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>SuperView</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <!-- Template styles -->
+    <style rel="stylesheet">
+        /* TEMPLATE STYLES */
+
+        main {
+            margin-top: 3rem;
+        }
+
+        main .card {
+            margin-bottom: 2rem;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .read-more {
+                text-align: center;
+            }
+        }
+    </style>
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/tether.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script type="text/javascript">
+
+    function getOneSignalToken() {
+        window.bridge.post('onesignaltoken', {}, (results, error) => {
+            $('#onesignal_token').html(results.token)
+        })
+    }
+
+    function getAppVersion() {
+        window.bridge.post('get_app_version', {}, (results, error) => {
+           $('#get_app_version').html(results.version)
+        })
+    }
+
+    function getFirebaseToken() {
+        window.bridge.post('firebasetoken', {}, (results, error) => {
+           $('#firebase_token').html(results.token)
+        })
+    }
+
+    function makePurchase() {
+        window.bridge.post('make_purchase', {})
+    }
+
+    function showInterstitial() {
+        window.bridge.post('show_interstitial', {})
+    }
+
+    function isProductPurchased() {
+        window.bridge.post('app_purchased', {}, (results, error) => {
+            $('#purchased').html("purchased: " + results.purchased)
+        })
+    }
+
+    function createNotification(display, message) {
+        window.bridge.post('create_notification', {title: display, message: message})
+    }
+
+    function shareApp(display, message) {
+        window.bridge.post('share', {title: "Test", url: "google.com"})
+    }
+
+    function showLoader() {
+        window.bridge.post('show_loader', {})
+    }
+
+    function hideLoader() {
+        window.bridge.post('hide_loader', {})
+    }
+
+    function rateApp() {
+        window.bridge.post('rate_app', {})
+    }
+
+    function getCurrentGPSLocation() {
+        window.bridge.post('current_gps_location', {}, (results, error) => {
+            $('#current_gps_location').html("Longitude: " + results.longitude + " <br /> Latitude: " + results.latitude)
+        })
+    }
+
+    function getGPSLocationTracking() {
+        var unregisterHandler = window.bridge.on('gps_location', (parameters)=> {
+            $('#gps_token').html("Longitude: " + parameters.longitude + " <br /> Latitude: " + parameters.latitude)
+        })
+    }
+
+    function playSound() {
+        window.bridge.post('play_sound', {"name": "1.mp3"})
+    }
+
+    function stopSound() {
+        window.bridge.post('stop_sound')
+    }
+
+    function alertTest() {
+        alert("Test");
+    }
+
+    function confirmTest() {
+        var r = confirm("Press a button!");
+        if (r == true) {
+            $('#confirm').html("You pressed OK!");
+        } else {
+            $('#confirm').html("You pressed Cancel!");
+        }
+    }
+
+    function promptTest() {
+        var person = prompt("Please enter your name", "Harry Potter");
+        if (person != null) {
+            $('#prompt').html("Hello " + person + "! How are you today?");
+        }
+    }
+
+        </script>
+
+    <script type="text/javascript">
+        /* wk.bridge.min.js | v0.2 */
+        (function(){if(window.isIOS){return}window.isIOS=function(){return navigator&&navigator.userAgent&&(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))}}());
+        (function(){if(window.bridge){return}window.bridge=function(){var callbacks=[],callbackID=0,registerHandlers=[];document.addEventListener("PacificDidReceiveNativeCallback",function(e){if(e.detail){var detail=e.detail;var id=isNaN(parseInt(detail.id))?-1:parseInt(detail.id);if(id!=-1){callbacks[id]&&callbacks[id](detail.parameters,detail.error);delete callbacks[id]}}},false);document.addEventListener("PacificDidReceiveNativeBroadcast",function(e){if(e.detail){var detail=e.detail;var name=detail.name;if(name!==undefined&&registerHandlers[name]){var namedListeners=registerHandlers[name];if(namedListeners instanceof Array){var parameters=detail.parameters;namedListeners.forEach(function(handler){handler(parameters)})}}}},false);return{"post":function(action,parameters,callback,print){var id=callbackID++;callbacks[id]=callback;if(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.pacific){window.webkit.messageHandlers.pacific.postMessage({"action":action,"parameters":parameters,"callback":id,"print":print||0})}},"on":function(name,callback){var namedListeners=registerHandlers[name];if(!namedListeners){registerHandlers[name]=namedListeners=[]}namedListeners.push(callback);return function(){namedListeners[indexOf(namedListeners,callback)]=null}},"off":function(name){delete registerHandlers[name]}}}()}());
+        </script>
+
+</head>
+
+<body>
+
+    <main>
+        <!--Main layout-->
+        <div class="container">
+
+            <!--First row-->
+            <div class="row">
+                <!--First column-->
+                <div class="col-md-16">
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            <h4 class="card-title">Welcome</h4>
+                            <!--Text-->
+                            <p class="card-text">SuperView is an Xcode project that allows you to wrap your website in a super simple iOS app. If you are a web developer who wants to release an iOS app, this should help you cut some corners when it comes to learning Swift. It is ideal for single page web app with on-screen/no navigation. For example, a game, interactive page, web based slideshow, etc.</p>
+                            <div class="read-more">
+                                <a href="https://codecanyon.net/item/universal-webview-ios-app-push-notification-swift-admob/17383449" class="btn btn-primary">SuperView App Page</a>
+                            </div>
+                        </div>
+                        <!--/.Card content-->
+
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--/.First column-->
+
+                <!--Second column-->
+                <div class="col-md-16">
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            <h4 class="card-title">Try Your Website</h4>
+                            <!--Text-->
+                            <p class="card-text">Click on the button bellow to test your website. Just search your web via Google and check it out.</p>
+                            <div class="read-more">
+                                <a href="http://www.google.com" class="btn btn-primary">Visit Google</a>
+                            </div>
+                        </div>
+                        <!--/.Card content-->
+
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--/.Second column-->
+
+                <!--Third column-->
+                <div class="col-md-16">
+
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            <h4 class="card-title">Download & Upload</h4>
+                            <!--Text-->
+                            <p class="card-text">WebView App has a download manager. Try to download sample file. You can also upload a file with the file picker.</p>
+                            <div class="read-more">
+                                <a href="1.mp3" class="btn btn-primary" download>Download</a>
+                                <a href="https://encodable.com/uploaddemo/" class="btn btn-primary">Upload</a>
+                            </div>
+                        </div>
+                        <!--/.Card content-->
+
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--/.Third column-->
+            </div>
+            <!--/.First row-->
+
+            <!--Second row-->
+            <div class="row">
+                <!--First column-->
+                <div class="col-md-16">
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            <h4 class="card-title">Video</h4>
+                            <!--Text-->
+                            <p class="card-text">WebView App supports HTML5 videos, YouTube, Vimeo, JW Player etc. You can play any video you want.</p>
+                            <div class="read-more">
+                                <a href="https://www.youtube.com" class="btn btn-primary">Video</a>
+                            </div>
+                        </div>
+                        <!--/.Card content-->
+
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--/.First column-->
+
+                <!--Second column-->
+                <div class="col-md-16">
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            <h4 class="card-title">Geolocation</h4>
+                            <!--Text-->
+                            <p class="card-text">WebView App supportst HTML5 geolocation. You just need to accept necessery permissions when prompted in the app. As of Chrome 50, the Geolocation API will only work on secure contexts such as HTTPS. If your site is hosted on an non-secure origin (such as HTTP) the requests to get the users location will no longer function.</p>
+                          <p class="card-text">Click on the button bellow to test if your website can get user location. Just search your web via Google and check it out.</p>
+                            <div class="read-more">
+                                <a href="https://mycurrentlocation.net" class="btn btn-primary">My Current Location</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--Second column-->
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Phone call</h4>
+                            <div class="read-more">
+                                <a href="tel:+0012345678912" class="btn btn-primary">tel:0012345678912</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">SMS</h4>
+                            <div class="read-more">
+                                <a href="sms:+33102030405?body=Body Content"" class="btn btn-primary">sms:0012345678912</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Email</h4>
+                            <div class="read-more">
+                                <a href="mailto:someone@example.com?subject=Message" class="btn btn-primary">mailto:someone@example.com?subject=Message</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">WhatsApp</h4>
+                            <div class="read-more">
+                                <a href="whatsapp://send?text=Hello%20World" class="btn btn-primary">whatsapp://send?text=Hello%20World</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Google Maps</h4>
+                            <div class="read-more">
+                                <a id="geo-location" href="" class="btn btn-primary"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">OneSignal Player Id</h4>
+                            <p id="onesignal_token"></p>
+                            <div class="read-more">
+                                <a id="get_onesignal_token" class="btn btn-primary" onClick="getOneSignalToken()">Get OneSignal player id</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">App Version</h4>
+                            <p id="get_app_version"></p>
+                            <div class="read-more">
+                                <a id="get_onesignal_token" class="btn btn-primary" onClick="getAppVersion()">Get app version</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Firebase Token</h4>
+                            <p id="firebase_token"></p>
+                            <div class="read-more">
+                                <a id="get_firebase_token" class="btn btn-primary" onClick="getFirebaseToken()">Get firebase token</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Make purchase to remove ads</h4>
+                            <div class="read-more">
+                                <a id="make_purchase" class="btn btn-primary" onClick="makePurchase()" >Purchase</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Is app purchased</h4>
+                            <p id="purchased"></p>
+                            <div class="read-more">
+                                <a id="is_ads_removed" class="btn btn-primary" onClick="isProductPurchased()" >Is purchased</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Local Notification</h4>
+                            <div class="read-more">
+                                <a id="local_notification" class="btn btn-primary" onClick="createNotification('SuperView', 'This is a test notification')" >Test Notification</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Current GPS Location</h4>
+                            <p id="current_gps_location"></p>
+                            <div class="read-more">
+                                <a id="get_gps_token" class="btn btn-primary" onClick="getCurrentGPSLocation()">Get current GPS Location</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">GPS Location</h4>
+                            <p id="gps_token"></p>
+                            <div class="read-more">
+                                <a id="get_gps_token" class="btn btn-primary" onClick="getGPSLocationTracking()">Start Location Tracking</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Show Loader</h4>
+                            <div class="read-more">
+                                <a id="show_loader" class="btn btn-primary" onClick="showLoader()" >Show Loader</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Hide Loader</h4>
+                            <div class="read-more">
+                                <a id="hide_loader" class="btn btn-primary" onClick="hideLoader()" >Hide Loader</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                        <div class="card">
+                            <div class="card-block">
+                            <h4 class="card-title">Show Interstitial Ad</h4>
+                            <div class="read-more">
+                                <a id="show_interstitial" class="btn btn-primary" onClick="showInterstitial()" >Show Ad</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Rate app</h4>
+                            <div class="read-more">
+                                <a id="rate-app" class="btn btn-primary" onClick="rateApp()">Rate App</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Play Music</h4>
+                            <div class="read-more">
+                                <a id="sound-app" class="btn btn-primary" onClick="playSound()">Play</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Stop Music</h4>
+                            <div class="read-more">
+                                <a id="sound-app" class="btn btn-primary" onClick="stopSound()">Stop</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Share</h4>
+                            <div class="read-more">
+                                <a id="share-app" class="btn btn-primary" onClick="shareApp()">Share</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Show JavaScript Alert</h4>
+                            <div class="read-more">
+                                <a id="sound-app" class="btn btn-primary" onClick="alertTest()">Alert</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Show JavaScript Confirm</h4>
+                            <p id="confirm"></p>
+                            <div class="read-more">
+                                <a id="sound-app" class="btn btn-primary" onClick="confirmTest()">Confirm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-16">
+                    <div class="card">
+                        <div class="card-block">
+                          <h4 class="card-title">Show JavaScript Prompt</h4>
+                            <p id="prompt"></p>
+                            <div class="read-more">
+                                <a id="get_prompt" class="btn btn-primary" onClick="promptTest()">Prompt</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+            <!--/.Second row-->
+            <hr>
+
+        </div>
+        <!--/.Main layout-->
+    </main>
+
+</body>
+
+</html>
