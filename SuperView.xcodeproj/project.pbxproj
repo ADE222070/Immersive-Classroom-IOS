@@ -82,6 +82,7 @@
 		CD6A99C21D5B1B8600E25A08 = {
 			isa = PBXGroup;
 			children = (
+				F02BC229213D829E003E3ADF /* Scripts */,
 				CD6A99E01D5B1BAA00E25A08 /* SuperView.plist */,
 				CD6A99CD1D5B1B8600E25A08 /* SuperView */,
 				CD6A99CC1D5B1B8600E25A08 /* Products */,
@@ -122,6 +123,13 @@
 			path = SuperView;
 			sourceTree = "<group>";
 		};
+		F02BC229213D829E003E3ADF /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +142,7 @@
 				CD6A99C81D5B1B8600E25A08 /* Frameworks */,
 				CD6A99C91D5B1B8600E25A08 /* Resources */,
 				DB65B082F3B06527E81C52ED /* [CP] Embed Pods Frameworks */,
+				F02BC22A213D8421003E3ADF /* Set build number */,
 			);
 			buildRules = (
 			);
@@ -260,6 +269,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuperView/Pods-SuperView-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F02BC22A213D8421003E3ADF /* Set build number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set build number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/Scripts/set_build_number.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
