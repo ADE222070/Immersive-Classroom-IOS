@@ -6,18 +6,10 @@
 	<string></string>
 	<key>Toolbar</key>
 	<true/>
-	<key>AdMobAppID</key>
-	<string>ca-app-pub-3381628848661821~3943774839</string>
-	<key>AdMobBannerUnitId</key>
-	<string>ca-app-pub-3381628848661821/5420508039</string>
-	<key>AdMobInterstitialUnitId</key>
-	<string>ca-app-pub-3381628848661821/6897241230</string>
 	<key>OneSignalAppID</key>
 	<string>ec291a7f-c387-4c06-a37e-34b0b24d97bf</string>
 	<key>ShowInterstitialInSecoundsEvery</key>
 	<string>60</string>
-	<key>RemoveAdsPurchaseId</key>
-	<string>com.brommko.universalwebview.removeads</string>
 	<key>AppIDForRateMyApp</key>
 	<string>1200056404</string>
 	<key>PullToRefresh</key>
@@ -25,7 +17,7 @@
 	<key>UseGPS</key>
 	<true/>
 	<key>UseLocalServer(Best for games)</key>
-	<false/>
+	<true/>
 	<key>EnableWebViewCache</key>
 	<false/>
 </dict>
