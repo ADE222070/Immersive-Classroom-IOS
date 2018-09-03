@@ -23,6 +23,7 @@
 		CDBE24E31D800D52007B9363 /* domains.json in Resources */ = {isa = PBXBuildFile; fileRef = CDBE24E21D800D52007B9363 /* domains.json */; };
 		CDCD81701F58956E0063FF11 /* RateMyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD816F1F58956E0063FF11 /* RateMyApp.swift */; };
 		EACDB836501E8DC0573A4BE7 /* Pods_SuperView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D3AD4CF5ABC76859E470 /* Pods_SuperView.framework */; };
+		F055995A213D8CBA00E0804F /* set_build_number.sh in Resources */ = {isa = PBXBuildFile; fileRef = F0559959213D8CBA00E0804F /* set_build_number.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		CDC4D5121D8BDFE4009DFDD5 /* SuperView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SuperView.entitlements; sourceTree = "<group>"; };
 		CDCD816F1F58956E0063FF11 /* RateMyApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateMyApp.swift; sourceTree = "<group>"; };
 		D6D5D3AD4CF5ABC76859E470 /* Pods_SuperView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0559959213D8CBA00E0804F /* set_build_number.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_build_number.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		CD6A99C21D5B1B8600E25A08 = {
 			isa = PBXGroup;
 			children = (
+				F02BC229213D829E003E3ADF /* Scripts */,
 				CD6A99E01D5B1BAA00E25A08 /* SuperView.plist */,
 				CD6A99CD1D5B1B8600E25A08 /* SuperView */,
 				CD6A99CC1D5B1B8600E25A08 /* Products */,
@@ -122,6 +125,14 @@
 			path = SuperView;
 			sourceTree = "<group>";
 		};
+		F02BC229213D829E003E3ADF /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				F0559959213D8CBA00E0804F /* set_build_number.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +145,7 @@
 				CD6A99C81D5B1B8600E25A08 /* Frameworks */,
 				CD6A99C91D5B1B8600E25A08 /* Resources */,
 				DB65B082F3B06527E81C52ED /* [CP] Embed Pods Frameworks */,
+				F02BC22A213D8421003E3ADF /* Set build number */,
 			);
 			buildRules = (
 			);
@@ -152,7 +164,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = "Brommko LLC";
+				ORGANIZATIONNAME = "Production Park Ltd";
 				TargetAttributes = {
 					CD6A99CA1D5B1B8600E25A08 = {
 						CreatedOnToolsVersion = 7.3;
@@ -197,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD3EBEE7200E66B9001A51BB /* 1.mp3 in Resources */,
+				F055995A213D8CBA00E0804F /* set_build_number.sh in Resources */,
 				CD22F7E71DAC1A2D00401E59 /* www in Resources */,
 				CD999E1C1D95478F009AF731 /* Launch Screen.storyboard in Resources */,
 				CD2A1D921E07295800261CDE /* NoInternet.html in Resources */,
@@ -260,6 +273,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuperView/Pods-SuperView-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F02BC22A213D8421003E3ADF /* Set build number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set build number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/Scripts/set_build_number.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
