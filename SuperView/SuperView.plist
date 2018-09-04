@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>URL</key>
-	<string></string>
+	<string>https://portal.immersiveclassroom.one</string>
 	<key>Toolbar</key>
-	<true/>
+	<false/>
 	<key>OneSignalAppID</key>
 	<string>ec291a7f-c387-4c06-a37e-34b0b24d97bf</string>
 	<key>ShowInterstitialInSecoundsEvery</key>
