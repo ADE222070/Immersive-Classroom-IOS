@@ -8,8 +8,6 @@
 	<false/>
 	<key>OneSignalAppID</key>
 	<string>ec291a7f-c387-4c06-a37e-34b0b24d97bf</string>
-	<key>ShowInterstitialInSecoundsEvery</key>
-	<string>60</string>
 	<key>AppIDForRateMyApp</key>
 	<string>1200056404</string>
 	<key>PullToRefresh</key>
