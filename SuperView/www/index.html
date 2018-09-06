@@ -127,6 +127,10 @@
         window.bridge.post('stop_sound')
     }
 
+    function SENDOSC() {
+        window.bridge.post('SendOSC')
+    }
+    
     function alertTest() {
         alert("Test");
     }
@@ -492,6 +496,17 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="col-md-16">
+                <div class="card">
+                <div class="card-block">
+                <h4 class="card-title">Send OSC</h4>
+                <div class="read-more">
+                <a id="sound-app" class="btn btn-primary" onClick="SENDOSC()">Send OSC</a>
+                </div>
+                </div>
+                </div>
                 </div>
 
                 <div class="col-md-16">

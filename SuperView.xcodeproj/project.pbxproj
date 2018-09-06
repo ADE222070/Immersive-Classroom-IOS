@@ -23,8 +23,26 @@
 		CDBE24E31D800D52007B9363 /* domains.json in Resources */ = {isa = PBXBuildFile; fileRef = CDBE24E21D800D52007B9363 /* domains.json */; };
 		CDCD81701F58956E0063FF11 /* RateMyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD816F1F58956E0063FF11 /* RateMyApp.swift */; };
 		EACDB836501E8DC0573A4BE7 /* Pods_SuperView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5D3AD4CF5ABC76859E470 /* Pods_SuperView.framework */; };
+		F01D13982141575D00BBC7AB /* SwiftOSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F01D13952141572300BBC7AB /* SwiftOSC.framework */; };
 		F055995A213D8CBA00E0804F /* set_build_number.sh in Resources */ = {isa = PBXBuildFile; fileRef = F0559959213D8CBA00E0804F /* set_build_number.sh */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F01D138E2141570C00BBC7AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F01D138A2141570C00BBC7AB /* OSCTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 031ABE6C1FB64DC7005184D4;
+			remoteInfo = OSCTest;
+		};
+		F01D13942141572300BBC7AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F01D13902141572300BBC7AB /* iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 036486761F820BBD00F3D6CE;
+			remoteInfo = SwiftOSC;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6FB41A02A45CA3294D09AF1A /* Pods-SuperView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperView.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperView/Pods-SuperView.release.xcconfig"; sourceTree = "<group>"; };
@@ -49,6 +67,9 @@
 		CDC4D5121D8BDFE4009DFDD5 /* SuperView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SuperView.entitlements; sourceTree = "<group>"; };
 		CDCD816F1F58956E0063FF11 /* RateMyApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateMyApp.swift; sourceTree = "<group>"; };
 		D6D5D3AD4CF5ABC76859E470 /* Pods_SuperView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F01D138A2141570C00BBC7AB /* OSCTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OSCTest.xcodeproj; path = "../../../../Downloads/SwiftOSC-master/Examples/iOS/OSCTest/OSCTest.xcodeproj"; sourceTree = "<group>"; };
+		F01D13902141572300BBC7AB /* iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOS.xcodeproj; path = "../../../../Downloads/SwiftOSC-master/Framework/iOS/iOS.xcodeproj"; sourceTree = "<group>"; };
+		F01D13962141574D00BBC7AB /* SwiftOSC.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; name = SwiftOSC.xcworkspace; path = "../../../../Downloads/SwiftOSC-master/SwiftOSC.xcworkspace"; sourceTree = "<group>"; };
 		F0559959213D8CBA00E0804F /* set_build_number.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_build_number.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F01D13982141575D00BBC7AB /* SwiftOSC.framework in Frameworks */,
 				EACDB836501E8DC0573A4BE7 /* Pods_SuperView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +98,9 @@
 		6E4D7A0EBC02878DD491126D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F01D13962141574D00BBC7AB /* SwiftOSC.xcworkspace */,
+				F01D13902141572300BBC7AB /* iOS.xcodeproj */,
+				F01D138A2141570C00BBC7AB /* OSCTest.xcodeproj */,
 				D6D5D3AD4CF5ABC76859E470 /* Pods_SuperView.framework */,
 			);
 			name = Frameworks;
@@ -123,6 +148,22 @@
 				CD27E1DE1D65EFE700EBE817 /* UniversalWebView-Bridging-Header.h */,
 			);
 			path = SuperView;
+			sourceTree = "<group>";
+		};
+		F01D138B2141570C00BBC7AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F01D138F2141570C00BBC7AB /* OSCTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F01D13912141572300BBC7AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F01D13952141572300BBC7AB /* SwiftOSC.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		F02BC229213D829E003E3ADF /* Scripts */ = {
@@ -196,12 +237,39 @@
 			mainGroup = CD6A99C21D5B1B8600E25A08;
 			productRefGroup = CD6A99CC1D5B1B8600E25A08 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F01D13912141572300BBC7AB /* Products */;
+					ProjectRef = F01D13902141572300BBC7AB /* iOS.xcodeproj */;
+				},
+				{
+					ProductGroup = F01D138B2141570C00BBC7AB /* Products */;
+					ProjectRef = F01D138A2141570C00BBC7AB /* OSCTest.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CD6A99CA1D5B1B8600E25A08 /* SuperView */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F01D138F2141570C00BBC7AB /* OSCTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = OSCTest.app;
+			remoteRef = F01D138E2141570C00BBC7AB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F01D13952141572300BBC7AB /* SwiftOSC.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftOSC.framework;
+			remoteRef = F01D13942141572300BBC7AB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CD6A99C91D5B1B8600E25A08 /* Resources */ = {

@@ -19,7 +19,105 @@ import CoreLocation
 import AVFoundation
 import GCDWebServer
 
+import SwiftOSC
+
+
+//OSC
+
+// Setup Client. Change address from localhost if needed.
+var client = OSCClient(address: "localhost", port: 8080)
+
+var address = OSCAddressPattern("/")
+
+class ViewControllerOSC: UIViewController {
+    
+    
+    //Variables
+    var ipAddress = "localhost"
+    var port = 8080
+    var text = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //Connect UI and send OSC message
+    @IBAction func ipAddressTextField(_ sender: UITextField) {
+        
+        if let text = sender.text {
+            ipAddress = text
+            client = OSCClient(address: ipAddress, port: port)
+        }
+    }
+    
+    @IBAction func portTextField(_ sender: UITextField) {
+        
+        if let text = sender.text {
+            if let number = Int(text) {
+                print(number)
+                port = number
+                client = OSCClient(address: ipAddress, port: port)
+            }
+        }
+    }
+    
+    @IBAction func addressPatternTextField(_ sender: UITextField) {
+        
+        if let text = sender.text {
+            address = OSCAddressPattern(text)
+        }
+    }
+    
+    @IBAction func stepper(_ sender: UIStepper) {
+        let message = OSCMessage(address, Int(sender.value))
+        client.send(message)
+    }
+    
+    @IBAction func slider(_ sender: UISlider) {
+        let message = OSCMessage(address, sender.value)
+        client.send(message)
+    }
+    
+    @IBAction func switcher(_ sender: UISwitch) {
+        let message = OSCMessage(address, sender.isOn)
+        client.send(message)
+    }
+    
+    @IBAction func impulse(_ sender: UIButton) {
+        let message = OSCMessage(address)
+        client.send(message)
+    }
+    
+    @IBAction func text(_ sender: UITextField) {
+        
+        text = sender.text!
+    }
+    
+    @IBAction func sendText(_ sender: UIButton) {
+        let message = OSCMessage(address, text)
+        client.send(message)
+    }
+    
+//    OSC Bridge
+
+        func sendOSC() {
+            let message = OSCMessage(address, text)
+            client.send(message)
+            }
+    
+//    End of OSC Bridge
+    
+}
+//END OSC
+
 class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, MBProgressHUDDelegate, GADBannerViewDelegate, GADInterstitialDelegate, LocationServiceDelegate, GCDWebServerDelegate  {
+
     
     @IBOutlet weak var backgroundImage: UIImageView?
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -281,6 +379,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         self.wkWebView?.bridge.register({ (parameters, completion) in
             completion(.success(["purchased": Defaults[.adsPurchased]]))
         }, for: "app_purchased")
+        
+//        OSC Bridge Test
+        self.wkWebView?.bridge.register({ (parameters, completion) in
+            ViewControllerOSC().sendOSC() //this needs something...
+        }, for: "SendOSC")
+//        End of OSC Bridge Test
         
         self.wkWebView?.bridge.register({ (parameters, completion) in
             let title:String! = parameters?["title"] as! String
@@ -992,4 +1096,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         self.wkWebView?.removeBridge()
     }
 }
+
+
 
